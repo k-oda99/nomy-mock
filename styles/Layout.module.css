@@ -1,0 +1,25 @@
+.main {
+  padding-bottom: 93px;
+}
+
+.mega_menu {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.mega_menu_wrapper {
+  display: flex;
+}
+
+.mega_menu_child {
+  width: calc(100% / 4);
+  height: 93px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: -webkit-flex;
+  display: flex;
+  font-size: 0.7rem;
+}

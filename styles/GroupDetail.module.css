@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.good_button {
+  width: 160px;
+  height: 38px;
+  font-family: inherit;
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  background: #c63f5a;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.good_button:hover {
+  background: #c63f5a;
+}
+
+.good_done_button {
+  width: 160px;
+  height: 38px;
+  font-family: inherit;
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  background: #949498;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.back_button {
+  width: 160px;
+  height: 38px;
+  font-family: inherit;
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  background: #949498;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 20px;
+}
