@@ -16,14 +16,11 @@ interface Props {
 }
 
 const UserDetail: VFC<Props> = ({ group }) => {
-  console.log('goodStatusVar()[group?.id]', goodStatusVar()[group?.id])
   const [goodStatus, setGoodStatus] = useState(goodStatusVar()[group?.id] || false)
-  console.log('goodStatus', goodStatus)
 
   const onClickGoodButton = () => {
     goodStatusVar()[group?.id] = !goodStatus
     setGoodStatus(!goodStatus)
-    console.log('goodStatusVar()[group?.id]', goodStatusVar()[group?.id])
   }
   return (
     <div className={styles.container}>
