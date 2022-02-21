@@ -5,6 +5,7 @@ import { group } from '../types/group'
 import { user } from '../types/user'
 
 export const useGetGroups = () => {
+  // 不使用 ISRの構文をhookに切り出したい
   const { data, error } = useQuery<GetGroupsQuery>(GET_GROUPS, {
     fetchPolicy: 'cache-and-network',
   })

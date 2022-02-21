@@ -16,6 +16,8 @@ interface Props {
   } & Pick<Groups, 'id' | 'users'>)[]
 }
 const Home: VFC<Props> = ({ groups }) => {
+  // クエリの型をプレーンなオブジェクトの型に変換
+  // TODO データ取得のメソッドと一緒にhookに切り出す
   const convertedGroups: group[] = groups.reduce<group[]>((output, group) => {
     const users = group.users
     const convertedUsers: user[] = users.reduce<user[]>((output2, user) => {
@@ -35,6 +37,7 @@ const Home: VFC<Props> = ({ groups }) => {
     return output
   }, [])
 
+  // 要素の高さが一定ではない一覧表示なので、左右でwrapする
   const leftContainer = convertedGroups?.slice(0, groups.length / 2)
   const rightContainer = convertedGroups?.slice(groups.length / 2, groups.length)
 
