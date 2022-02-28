@@ -953,7 +953,9 @@ export type Users = {
   group?: Maybe<Groups>
   group_id?: Maybe<Scalars['uuid']>
   id: Scalars['uuid']
-  image?: Maybe<Scalars['String']>
+  image_for_card?: Maybe<Scalars['String']>
+  image_for_icon?: Maybe<Scalars['String']>
+  image_for_profile?: Maybe<Scalars['String']>
   job?: Maybe<Scalars['String']>
   name: Scalars['String']
   /** An object relationship */
@@ -1028,7 +1030,9 @@ export type Users_Bool_Exp = {
   group?: InputMaybe<Groups_Bool_Exp>
   group_id?: InputMaybe<Uuid_Comparison_Exp>
   id?: InputMaybe<Uuid_Comparison_Exp>
-  image?: InputMaybe<String_Comparison_Exp>
+  image_for_card?: InputMaybe<String_Comparison_Exp>
+  image_for_icon?: InputMaybe<String_Comparison_Exp>
+  image_for_profile?: InputMaybe<String_Comparison_Exp>
   job?: InputMaybe<String_Comparison_Exp>
   name?: InputMaybe<String_Comparison_Exp>
   profile?: InputMaybe<Profiles_Bool_Exp>
@@ -1051,7 +1055,9 @@ export type Users_Insert_Input = {
   group?: InputMaybe<Groups_Obj_Rel_Insert_Input>
   group_id?: InputMaybe<Scalars['uuid']>
   id?: InputMaybe<Scalars['uuid']>
-  image?: InputMaybe<Scalars['String']>
+  image_for_card?: InputMaybe<Scalars['String']>
+  image_for_icon?: InputMaybe<Scalars['String']>
+  image_for_profile?: InputMaybe<Scalars['String']>
   job?: InputMaybe<Scalars['String']>
   name?: InputMaybe<Scalars['String']>
   profile?: InputMaybe<Profiles_Obj_Rel_Insert_Input>
@@ -1066,7 +1072,9 @@ export type Users_Max_Fields = {
   created_at?: Maybe<Scalars['timestamptz']>
   group_id?: Maybe<Scalars['uuid']>
   id?: Maybe<Scalars['uuid']>
-  image?: Maybe<Scalars['String']>
+  image_for_card?: Maybe<Scalars['String']>
+  image_for_icon?: Maybe<Scalars['String']>
+  image_for_profile?: Maybe<Scalars['String']>
   job?: Maybe<Scalars['String']>
   name?: Maybe<Scalars['String']>
   profile_id?: Maybe<Scalars['uuid']>
@@ -1078,7 +1086,9 @@ export type Users_Max_Order_By = {
   created_at?: InputMaybe<Order_By>
   group_id?: InputMaybe<Order_By>
   id?: InputMaybe<Order_By>
-  image?: InputMaybe<Order_By>
+  image_for_card?: InputMaybe<Order_By>
+  image_for_icon?: InputMaybe<Order_By>
+  image_for_profile?: InputMaybe<Order_By>
   job?: InputMaybe<Order_By>
   name?: InputMaybe<Order_By>
   profile_id?: InputMaybe<Order_By>
@@ -1091,7 +1101,9 @@ export type Users_Min_Fields = {
   created_at?: Maybe<Scalars['timestamptz']>
   group_id?: Maybe<Scalars['uuid']>
   id?: Maybe<Scalars['uuid']>
-  image?: Maybe<Scalars['String']>
+  image_for_card?: Maybe<Scalars['String']>
+  image_for_icon?: Maybe<Scalars['String']>
+  image_for_profile?: Maybe<Scalars['String']>
   job?: Maybe<Scalars['String']>
   name?: Maybe<Scalars['String']>
   profile_id?: Maybe<Scalars['uuid']>
@@ -1103,7 +1115,9 @@ export type Users_Min_Order_By = {
   created_at?: InputMaybe<Order_By>
   group_id?: InputMaybe<Order_By>
   id?: InputMaybe<Order_By>
-  image?: InputMaybe<Order_By>
+  image_for_card?: InputMaybe<Order_By>
+  image_for_icon?: InputMaybe<Order_By>
+  image_for_profile?: InputMaybe<Order_By>
   job?: InputMaybe<Order_By>
   name?: InputMaybe<Order_By>
   profile_id?: InputMaybe<Order_By>
@@ -1139,7 +1153,9 @@ export type Users_Order_By = {
   group?: InputMaybe<Groups_Order_By>
   group_id?: InputMaybe<Order_By>
   id?: InputMaybe<Order_By>
-  image?: InputMaybe<Order_By>
+  image_for_card?: InputMaybe<Order_By>
+  image_for_icon?: InputMaybe<Order_By>
+  image_for_profile?: InputMaybe<Order_By>
   job?: InputMaybe<Order_By>
   name?: InputMaybe<Order_By>
   profile?: InputMaybe<Profiles_Order_By>
@@ -1163,7 +1179,11 @@ export enum Users_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  Image = 'image',
+  ImageForCard = 'image_for_card',
+  /** column name */
+  ImageForIcon = 'image_for_icon',
+  /** column name */
+  ImageForProfile = 'image_for_profile',
   /** column name */
   Job = 'job',
   /** column name */
@@ -1178,7 +1198,9 @@ export type Users_Set_Input = {
   created_at?: InputMaybe<Scalars['timestamptz']>
   group_id?: InputMaybe<Scalars['uuid']>
   id?: InputMaybe<Scalars['uuid']>
-  image?: InputMaybe<Scalars['String']>
+  image_for_card?: InputMaybe<Scalars['String']>
+  image_for_icon?: InputMaybe<Scalars['String']>
+  image_for_profile?: InputMaybe<Scalars['String']>
   job?: InputMaybe<Scalars['String']>
   name?: InputMaybe<Scalars['String']>
   profile_id?: InputMaybe<Scalars['uuid']>
@@ -1195,7 +1217,11 @@ export enum Users_Update_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  Image = 'image',
+  ImageForCard = 'image_for_card',
+  /** column name */
+  ImageForIcon = 'image_for_icon',
+  /** column name */
+  ImageForProfile = 'image_for_profile',
   /** column name */
   Job = 'job',
   /** column name */
@@ -1295,14 +1321,15 @@ export type GetGroupsQuery = {
   groups: Array<{
     __typename?: 'groups'
     id: any
-    name: string
     users: Array<{
       __typename?: 'users'
-      age?: string | null
       id: any
-      image?: string | null
+      image_for_card?: string | null
+      image_for_icon?: string | null
+      image_for_profile?: string | null
       job?: string | null
       name: string
+      age?: string | null
     }>
   }>
 }
@@ -1313,7 +1340,20 @@ export type GetGroupByIdQueryVariables = Exact<{
 
 export type GetGroupByIdQuery = {
   __typename?: 'query_root'
-  groups_by_pk?: { __typename?: 'groups'; id: any; name: string } | null
+  groups_by_pk?: {
+    __typename?: 'groups'
+    id: any
+    users: Array<{
+      __typename?: 'users'
+      age?: string | null
+      id: any
+      image_for_card?: string | null
+      image_for_icon?: string | null
+      image_for_profile?: string | null
+      job?: string | null
+      name: string
+    }>
+  } | null
 }
 
 export type GetGroupIdsQueryVariables = Exact<{ [key: string]: never }>
@@ -1648,13 +1688,14 @@ export const GetGroupsDocument = gql`
   query GetGroups {
     groups {
       id
-      name
-      users(order_by: { name: asc, age: asc }) {
-        age
+      users(order_by: { age: asc, name: asc }) {
         id
-        image
+        image_for_card
+        image_for_icon
+        image_for_profile
         job
         name
+        age
       }
     }
   }
@@ -1707,8 +1748,16 @@ export type GetGroupsQueryResult = Apollo.QueryResult<
 export const GetGroupByIdDocument = gql`
   query GetGroupById($id: uuid!) {
     groups_by_pk(id: $id) {
+      users(order_by: { name: asc, age: asc }) {
+        age
+        id
+        image_for_card
+        image_for_icon
+        image_for_profile
+        job
+        name
+      }
       id
-      name
     }
   }
 `

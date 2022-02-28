@@ -1,34 +1,22 @@
-import React, { useState, VFC } from 'react'
-import Link from 'next/link'
-import styles from '../../styles/GroupDetail.module.css'
-import { goodStatusVar } from '../../../cache'
+import React, { VFC } from 'react'
 import { useRouter } from 'next/dist/client/router'
+import MainContainer from '../../components/atoms/MainContainer'
+import LowerLevelHeader from '../../components/molecules/LowerLevelHeader'
+import Content from '../../components/organisms/Content'
+import { useGetUsers } from '../../hooks/useGetUsers'
+import LowerLevelFooter from '../../components/molecules/LowerLevelFooter'
 
 const GroupDetail: VFC = () => {
   const router = useRouter()
   const id = router.query.id as string
-  const [goodStatus, setGoodStatus] = useState(goodStatusVar()[id] || false)
+  const { users } = useGetUsers(id)
 
-  const onClickGoodButton = () => {
-    goodStatusVar()[id] = !goodStatus
-    setGoodStatus(!goodStatus)
-  }
   return (
-    <div className={styles.container}>
-      {!goodStatus && (
-        <button onClick={onClickGoodButton} className={styles.good_button}>
-          いいね！！
-        </button>
-      )}
-      {goodStatus && (
-        <button onClick={onClickGoodButton} className={styles.good_done_button}>
-          いいね済み
-        </button>
-      )}
-      <Link href="/">
-        <button className={styles.back_button}>戻る</button>
-      </Link>
-    </div>
+    <MainContainer>
+      <LowerLevelHeader />
+      <Content users={users} />
+      <LowerLevelFooter id={id} />
+    </MainContainer>
   )
 }
 export default GroupDetail

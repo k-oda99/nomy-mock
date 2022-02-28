@@ -1,6 +1,6 @@
 import React, { memo, VFC } from 'react'
-import styles from '../../../styles/Home.module.css'
-import { user } from '../../../types/user'
+import styles from '../../styles/Home.module.css'
+import { user } from '../../types/user'
 
 interface Props {
   user: user
@@ -8,11 +8,11 @@ interface Props {
 
 export const Image: VFC<Props> = memo(function Image(props) {
   const { user } = props
-  const { image, name, age, job } = user
+  const { image_for_card, name, age, job } = user
   return (
     <>
       <div>
-        <img src={image} />
+        <img src={image_for_card} />
         <div className={styles.recommend_user_profile}>
           <span>{name}</span>
           <span>({age})</span>

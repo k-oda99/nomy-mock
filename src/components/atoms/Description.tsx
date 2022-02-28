@@ -1,5 +1,5 @@
 import React, { memo, VFC } from 'react'
-import styles from '../../../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
 
 export const Description: VFC = memo(function Description() {
   return (

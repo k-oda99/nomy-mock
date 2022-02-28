@@ -1,7 +1,7 @@
 import React, { memo, VFC } from 'react'
 import styles from '../../styles/Home.module.css'
-import { ImageContainer } from './squareCardContents/ImageContainer'
-import { Description } from './squareCardContents/Description'
+import { ImageContainer } from '../molecules/ImageContainer'
+import { Description } from '../atoms/Description'
 import { group } from '../../types/group'
 import Link from 'next/link'
 

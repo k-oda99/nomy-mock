@@ -1,13 +1,12 @@
 import React, { VFC } from 'react'
-import { GroupCardSquare } from '../components/groupCards/GroupCardSquare'
-import { GroupCardWide } from '../components/groupCards/GroupCardWide'
+import { GroupCardSquare } from '../components/organisms/GroupCardSquare'
+import { GroupCardWide } from '../components/organisms/GroupCardWide'
 import { Layout } from '../components/Layout'
 import { useGetGroups } from '../hooks/useGetGroups'
 import styles from '../styles/Home.module.css'
 
 const Home: VFC = () => {
   const { groups } = useGetGroups()
-
   // 要素の高さが一定ではない一覧表示なので、左右でwrapする
   const leftContainer = groups?.slice(0, groups.length / 2)
   const rightContainer = groups?.slice(groups.length / 2, groups.length)

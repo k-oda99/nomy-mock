@@ -1,7 +1,7 @@
 import React, { memo, VFC } from 'react'
-import styles from '../../../styles/Home.module.css'
-import { Image } from './Image'
-import { group } from '../../../types/group'
+import styles from '../../styles/Home.module.css'
+import { Image } from '../atoms/Image'
+import { group } from '../../types/group'
 
 interface Props {
   group: group

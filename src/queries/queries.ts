@@ -65,13 +65,14 @@ export const GET_GROUPS = gql`
   query GetGroups {
     groups {
       id
-      name
-      users(order_by: { name: asc, age: asc }) {
-        age
+      users(order_by: { age: asc, name: asc }) {
         id
-        image
+        image_for_card
+        image_for_icon
+        image_for_profile
         job
         name
+        age
       }
     }
   }
@@ -79,8 +80,16 @@ export const GET_GROUPS = gql`
 export const GET_GROUPBY_ID = gql`
   query GetGroupById($id: uuid!) {
     groups_by_pk(id: $id) {
+      users(order_by: { name: asc, age: asc }) {
+        age
+        id
+        image_for_card
+        image_for_icon
+        image_for_profile
+        job
+        name
+      }
       id
-      name
     }
   }
 `
