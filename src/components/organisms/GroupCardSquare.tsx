@@ -1,8 +1,8 @@
 import React, { memo, VFC } from 'react'
 import styles from '../../styles/Home.module.css'
-import { ImageContainer } from '../molecules/ImageContainer'
-import { Description } from '../atoms/Description'
-import { group } from '../../types/group'
+import { ImageContainer } from './ImageContainer'
+import { Description } from './Description'
+import { group } from '../../types/Group'
 import Link from 'next/link'
 
 interface Props {

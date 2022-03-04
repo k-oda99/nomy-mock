@@ -1,19 +1,10 @@
 import React, { VFC } from 'react'
 import { css } from '@emotion/css'
-import { user } from '../../types/user'
-import UserIcon from '../atoms/UserIcon'
-
-const userIconWrapper = css`
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 55px;
-  margin: 1vw 0;
-  padding-left: 3vw;
-`
+import { User } from '../../types/User'
+import UserIcon from '../organisms/UserIcon'
 
 interface Props {
-  users: user[]
+  users: User[]
   selectedUser: string
   setSelectedUser
 }
@@ -34,4 +25,14 @@ const UserIconWrapper: VFC<Props> = (props) => {
     </div>
   )
 }
+
+const userIconWrapper = css`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 55px;
+  margin: 1vw 0;
+  padding-left: 3vw;
+`
+
 export default UserIconWrapper

@@ -1,5 +1,27 @@
-import React, { VFC } from 'react'
+import React, { FC } from 'react'
 import { css } from '@emotion/css'
+
+type BaseProps = React.ButtonHTMLAttributes<HTMLButtonElement>
+type OwnProps = {
+  buttonType: string
+}
+type Props = BaseProps & OwnProps
+
+const Button: FC<Props> = (props) => {
+  const { buttonType, ...rest } = props
+  return (
+    <button
+      {...rest}
+      className={
+        buttonType === 'primary'
+          ? styles.primaryButton
+          : buttonType === 'secondary'
+          ? styles.secondaryButton
+          : styles.lightButton
+      }
+    />
+  )
+}
 
 const button = css`
   width: 156px;
@@ -12,45 +34,23 @@ const button = css`
   font-size: 1rem;
   cursor: pointer;
 `
-const primaryButton = css`
-  ${button}
-  background: #c63f5a;
-  color: #fff;
-`
 
-const secondaryButton = css`
-  ${button}
-  background: #efefef;
-  color: #b3b3b3;
-`
-
-const doneButton = css`
-  ${button}
-  background: rgba(198, 63, 90, 0.08);
-  color: #c63f5a;
-`
-
-interface Props {
-  onClick
-  text: string
-  buttonType: string
+const styles = {
+  primaryButton: css`
+    ${button}
+    background: #c63f5a;
+    color: #fff;
+  `,
+  secondaryButton: css`
+    ${button}
+    background: #efefef;
+    color: #b3b3b3;
+  `,
+  lightButton: css`
+    ${button}
+    background: rgba(198, 63, 90, 0.08);
+    color: #c63f5a;
+  `,
 }
 
-const Button: VFC<Props> = (props) => {
-  const { onClick, text, buttonType } = props
-  return (
-    <button
-      onClick={onClick}
-      className={
-        buttonType === 'primary'
-          ? primaryButton
-          : buttonType === 'secondary'
-          ? secondaryButton
-          : doneButton
-      }
-    >
-      {text}
-    </button>
-  )
-}
 export default Button

@@ -2,8 +2,8 @@ import React, { VFC } from 'react'
 import { GroupCardSquare } from '../components/organisms/GroupCardSquare'
 import { GroupCardWide } from '../components/organisms/GroupCardWide'
 import { Layout } from '../components/Layout'
-import { useGetGroups } from '../hooks/useGetGroups'
 import styles from '../styles/Home.module.css'
+import { useGetGroups } from '../hooks'
 
 const Home: VFC = () => {
   const { groups } = useGetGroups()

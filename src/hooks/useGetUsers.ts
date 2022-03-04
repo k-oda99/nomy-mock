@@ -1,37 +1,25 @@
+import { User } from '../types/User'
 import { useGetGroupByIdQuery } from '../types/generated/graphql'
-import { user } from '../types/user'
 
-export const useGetUsers = (id) => {
-  const { data } = useGetGroupByIdQuery({
+const useGetUsers = (id) => {
+  const { data, ...rest } = useGetGroupByIdQuery({
     variables: {
       id,
     },
   })
 
   // クエリの型をプレーンなオブジェクトの型に変換
-  const users: user[] = data?.groups_by_pk.users.reduce<user[]>(
-    (output, user) => {
-      const {
-        id,
-        name,
-        age,
-        job,
-        image_for_card,
-        image_for_icon,
-        image_for_profile,
-      } = user
-      const userObj: user = {} as user
-      userObj.id = id
-      userObj.name = name
-      userObj.age = age
-      userObj.job = job
-      userObj.image_for_card = image_for_card
-      userObj.image_for_icon = image_for_icon
-      userObj.image_for_profile = image_for_profile
-      output.push(userObj)
-      return output
-    },
-    []
-  )
-  return { users }
+  const users = data?.groups_by_pk.users.map<User>((user) => ({
+    id: user.id,
+    name: user.name,
+    age: user.age,
+    job: user.job,
+    imageForCard: user.image_for_card,
+    imageForIcon: user.image_for_icon,
+    imageForProfile: user.image_for_profile,
+  }))
+
+  return { ...rest, data: users }
 }
+
+export default useGetUsers

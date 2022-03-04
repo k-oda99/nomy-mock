@@ -1,25 +1,13 @@
-import React, { memo, VFC } from 'react'
-import styles from '../../styles/Home.module.css'
-import { user } from '../../types/user'
+import React, { VFC } from 'react'
 
-interface Props {
-  user: user
+type Props = React.ImgHTMLAttributes<HTMLImageElement>
+
+const ProfileImage: VFC<Props> = (props) => {
+  return (
+    <div>
+      <img {...props}></img>
+    </div>
+  )
 }
 
-export const Image: VFC<Props> = memo(function Image(props) {
-  const { user } = props
-  const { image_for_card, name, age, job } = user
-  return (
-    <>
-      <div>
-        <img src={image_for_card} />
-        <div className={styles.recommend_user_profile}>
-          <span>{name}</span>
-          <span>({age})</span>
-          <br />
-          <span>{job}</span>
-        </div>
-      </div>
-    </>
-  )
-})
+export default ProfileImage

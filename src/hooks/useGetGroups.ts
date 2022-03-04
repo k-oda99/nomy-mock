@@ -1,14 +1,14 @@
+import { Group } from '../types/Group'
+import { User } from '../types/User'
 import { useGetGroupsQuery } from '../types/generated/graphql'
-import { group } from '../types/group'
-import { user } from '../types/user'
 
-export const useGetGroups = () => {
+const useGetGroups = () => {
   const { data } = useGetGroupsQuery()
 
   // クエリの型をプレーンなオブジェクトの型に変換
-  const groups: group[] = data?.groups.reduce<group[]>((output, group) => {
+  const groups: Group[] = data?.groups.reduce<Group[]>((output, group) => {
     const users = group.users
-    const convertedUsers: user[] = users.reduce<user[]>((output2, user) => {
+    const convertedUsers = users.reduce<User[]>((output2, user) => {
       const {
         name,
         age,
@@ -17,17 +17,17 @@ export const useGetGroups = () => {
         image_for_icon,
         image_for_profile,
       } = user
-      const userObj: user = {} as user
+      const userObj: User = {} as User
       userObj.name = name
       userObj.age = age
       userObj.job = job
-      userObj.image_for_card = image_for_card
-      userObj.image_for_icon = image_for_icon
-      userObj.image_for_profile = image_for_profile
+      userObj.imageForCard = image_for_card
+      userObj.imageForProfile = image_for_icon
+      userObj.imageForIcon = image_for_profile
       output2.push(userObj)
       return output2
     }, [])
-    const convertedGroup: group = {} as group
+    const convertedGroup: Group = {} as Group
     convertedGroup.id = group.id
     convertedGroup.users = convertedUsers
     output.push(convertedGroup)
@@ -36,3 +36,5 @@ export const useGetGroups = () => {
 
   return { groups }
 }
+
+export default useGetGroups

@@ -1,9 +1,9 @@
-export type user = {
+export type User = {
   id: string
   name: string
   age: string
   job: string
-  image_for_card: string
-  image_for_profile: string
-  image_for_icon: string
+  imageForCard: string
+  imageForProfile: string
+  imageForIcon: string
 }

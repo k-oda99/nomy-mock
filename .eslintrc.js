@@ -19,6 +19,6 @@ module.exports = {
   plugins: ['react', '@typescript-eslint'],
   rules: {
     'react/prop-types': 'off',
-    "no-console": "error",
+    'no-console': 'error',
   },
 }

@@ -1,6 +1,6 @@
-import { user } from './user'
+import { User } from './User'
 
-export type group = {
+export type Group = {
   id: string
-  users: user[]
+  users: User[]
 }

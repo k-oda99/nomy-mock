@@ -1,10 +1,10 @@
 import React, { memo, VFC } from 'react'
 import styles from '../../styles/Home.module.css'
-import { Image } from '../atoms/Image'
-import { group } from '../../types/group'
+import { Image } from './Imagea'
+import { Group } from '../../types/Group'
 
 interface Props {
-  group: group
+  group: Group
 }
 
 export const ImageContainer: VFC<Props> = memo(function ImageContainer(props) {

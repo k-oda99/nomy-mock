@@ -1,17 +1,12 @@
 import React, { useEffect, useState, VFC } from 'react'
 import { css } from '@emotion/css'
-import UserIconWrapper from '../molecules/UserIconWrapper'
-import { user } from '../../types/user'
-import ProfileDetail from '../molecules/ProfileDetail'
-import Profile from '../molecules/Profile'
-
-const content = css`
-  flex: 1;
-  overflow-y: scroll;
-`
+import UserIconWrapper from './UserIconWrapper'
+import { User } from '../../types/User'
+import ProfileDetail from './ProfileDetail'
+import Profile from './Profile'
 
 interface Props {
-  users: user[]
+  users: User[]
 }
 const Content: VFC<Props> = (props) => {
   const { users } = props
@@ -27,9 +22,18 @@ const Content: VFC<Props> = (props) => {
         selectedUser={selectedUser}
         setSelectedUser={setSelectedUser}
       />
-      <Profile users={users} selectedUser={selectedUser} />
+      {users?.map(
+        (user) =>
+          user.id === selectedUser && <Profile key={user.id} user={user} />
+      )}
       <ProfileDetail />
     </div>
   )
 }
+
+const content = css`
+  flex: 1;
+  overflow-y: scroll;
+`
+
 export default Content

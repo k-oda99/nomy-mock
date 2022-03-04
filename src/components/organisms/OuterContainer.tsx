@@ -1,6 +1,11 @@
 import React, { FC } from 'react'
 import { css } from '@emotion/css'
 
+const OuterContainer: FC = (props) => {
+  const { children } = props
+  return <div className={container}>{children}</div>
+}
+
 const container = css`
   display: flex;
   align-items: center;
@@ -10,8 +15,4 @@ const container = css`
   overflow: hidden;
 `
 
-const MainContainer: FC = (props) => {
-  const { children } = props
-  return <div className={container}>{children}</div>
-}
-export default MainContainer
+export default OuterContainer

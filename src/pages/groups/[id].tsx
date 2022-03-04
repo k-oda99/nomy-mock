@@ -1,22 +1,22 @@
 import React, { VFC } from 'react'
 import { useRouter } from 'next/dist/client/router'
-import MainContainer from '../../components/atoms/MainContainer'
-import LowerLevelHeader from '../../components/molecules/LowerLevelHeader'
+import OuterContainer from '../../components/organisms/OuterContainer'
+import LowerLevelHeader from '../../components/organisms/LowerLevelHeader'
 import Content from '../../components/organisms/Content'
-import { useGetUsers } from '../../hooks/useGetUsers'
-import LowerLevelFooter from '../../components/molecules/LowerLevelFooter'
+import LowerLevelFooter from '../../components/organisms/LowerLevelFooter'
+import { useGetUsers } from '../../hooks'
 
 const GroupDetail: VFC = () => {
   const router = useRouter()
-  const id = router.query.id as string
-  const { users } = useGetUsers(id)
+  const groupId = router.query.id as string
+  const { data } = useGetUsers(groupId)
 
   return (
-    <MainContainer>
+    <OuterContainer>
       <LowerLevelHeader />
-      <Content users={users} />
-      <LowerLevelFooter id={id} />
-    </MainContainer>
+      <Content users={data} />
+      <LowerLevelFooter groupId={groupId} />
+    </OuterContainer>
   )
 }
 export default GroupDetail
