@@ -1,7 +1,7 @@
+import { css } from '@emotion/css'
 import React, { memo, VFC } from 'react'
-import styles from '../../styles/Home.module.css'
 
-export const Description: VFC = memo(function Description() {
+const Description: VFC = memo(function Description() {
   return (
     <div className={styles.description}>
       <span>金土日祝</span>
@@ -11,3 +11,14 @@ export const Description: VFC = memo(function Description() {
     </div>
   )
 })
+
+const styles = {
+  description: css`
+    width: 100%;
+    text-align: left;
+    font-size: 0.5rem;
+    padding: 1vw 0 1vw 3vw;
+  `,
+}
+
+export default Description

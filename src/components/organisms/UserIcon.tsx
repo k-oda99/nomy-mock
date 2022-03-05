@@ -1,51 +1,48 @@
 import React, { VFC } from 'react'
 import { css } from '@emotion/css'
 import { User } from '../../types/User'
-import Image from '../atoms/Image'
 import { Box } from '@mui/material'
 
 interface Props {
   user: User
   selectedUser?: string
-  setSelectedUser?
+  onClickUserIcon?: React.Dispatch<React.SetStateAction<string>>
 }
 
 const UserIcon: VFC<Props> = (props) => {
-  const { user, selectedUser, setSelectedUser } = props
+  const { user, selectedUser, onClickUserIcon } = props
 
   return (
-    <Box
+    <div
       key={user.id}
-      onClick={() => setSelectedUser(user.id)}
-      className={userIcon}
+      onClick={() => onClickUserIcon(user.id)}
+      className={styles.userIcon}
     >
       {(selectedUser === user.id && (
-        <div className={userIconBackground}>
-          <Image src={user.imageForProfile} className={userIconImage}></Image>
+        <div className={styles.userIconBackground}>
+          <img src={user.imageForProfile} className={styles.userIconImage} />
         </div>
-      )) || (
-        <Image src={user.imageForProfile} className={userIconImage}></Image>
-      )}
-    </Box>
+      )) || <img src={user.imageForProfile} className={styles.userIconImage} />}
+    </div>
   )
 }
 
-const userIconImage = css`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-`
-
-const userIcon = css`
-  margin-right: 2vw;
-`
-
-const userIconBackground = css`
-  width: 54px;
-  height: 54px;
-  background: linear-gradient(to bottom, #ce3b9d, #fc3f39, #fd925e, #fdc959);
-  border-radius: 50%;
-  padding: 1.5px;
-`
+const styles = {
+  userIconImage: css`
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  `,
+  userIcon: css`
+    margin-right: 2vw;
+  `,
+  userIconBackground: css`
+    width: 51px;
+    height: 51px;
+    background: linear-gradient(to bottom, #ce3b9d, #fc3f39, #fd925e, #fdc959);
+    border-radius: 50%;
+    padding: 1.5px;
+  `,
+}
 
 export default UserIcon

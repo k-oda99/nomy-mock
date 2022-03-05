@@ -31,6 +31,7 @@ const styles = {
     justify-content: space-between;
     width: 100%;
     height: 42px;
+    margin: 1vw;
   `,
   action: css`
     width: 42px;

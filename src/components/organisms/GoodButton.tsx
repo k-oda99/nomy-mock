@@ -1,26 +1,21 @@
-import React, { useState, VFC } from 'react'
+import React, { VFC } from 'react'
 import { goodStatusVar } from '../../../cache'
 import { css } from '@emotion/css'
 import Button from '../atoms/Button'
+import { useReactiveVar } from '@apollo/client'
 
-const goodButton = css`
-  margin-bottom: 10px;
-`
-
-interface Props {
+type Props = {
   groupId: string
 }
+
 const GoodButton: VFC<Props> = (props) => {
   const { groupId } = props
-  const [goodStatus, setGoodStatus] = useState(
-    goodStatusVar()[groupId] || false
-  )
+  const goodStatusObj = useReactiveVar(goodStatusVar)
+  const goodStatus = goodStatusObj[groupId]
 
   const handleClickGoodButton = () => {
-    const goodStatusObj = { ...goodStatusVar() }
     goodStatusObj[groupId] = !goodStatus
-    goodStatusVar(goodStatusObj)
-    setGoodStatus(!goodStatus)
+    goodStatusVar({ ...goodStatusObj })
   }
   return (
     <div className={goodButton}>
@@ -37,4 +32,9 @@ const GoodButton: VFC<Props> = (props) => {
     </div>
   )
 }
+
+const goodButton = css`
+  margin-bottom: 10px;
+`
+
 export default GoodButton

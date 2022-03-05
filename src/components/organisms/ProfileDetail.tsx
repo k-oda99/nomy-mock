@@ -1,6 +1,75 @@
-/* eslint-disable no-irregular-whitespace */
 import React, { VFC } from 'react'
 import { css } from '@emotion/css'
+
+const ProfileDetail: VFC = () => {
+  return (
+    <div className={profileDetail}>
+      <div className={profileDetailTitle}>
+        <span>プロフィール情報</span>
+      </div>
+      {profileDetailInfos.map((profileDetailInfo, index) =>
+        profileDetailElement({ profileDetailInfo, index })
+      )}
+    </div>
+  )
+}
+
+const profileDetailElement = (args) => {
+  const { profileDetailInfo, index } = args
+  return (
+    <div key={index} className={profileDetailRow}>
+      <span className={profileDetailLabel}>{profileDetailInfo.label}</span>
+      <span className={profileDetailValue}>{profileDetailInfo.value}</span>
+    </div>
+  )
+}
+
+const profileDetailInfos = [
+  {
+    label: '職　業',
+    value: 'IT関係',
+  },
+  {
+    label: '年　収',
+    value: '500万円',
+  },
+  {
+    label: '身　長',
+    value: '175cm',
+  },
+  {
+    label: '体　型',
+    value: 'スレンダー',
+  },
+  {
+    label: '趣　味',
+    value: '音楽鑑賞、料理',
+  },
+  {
+    label: '出　身',
+    value: '神奈川',
+  },
+  {
+    label: '血液型',
+    value: 'B型',
+  },
+  {
+    label: '最終学歴',
+    value: '大学',
+  },
+  {
+    label: '学校名',
+    value: '能見野大学',
+  },
+  {
+    label: '言　語',
+    value: '日本語、英語',
+  },
+  {
+    label: 'タバコ',
+    value: '加熱式/電子タバコ',
+  },
+]
 
 const profileDetail = css`
   padding: 3vw;
@@ -29,57 +98,4 @@ const profileDetailValue = css`
   color: #5f5f5f;
 `
 
-const ProfileDetail: VFC = () => {
-  return (
-    <div className={profileDetail}>
-      <div className={profileDetailTitle}>
-        <span>プロフィール情報</span>
-      </div>
-      <div className={profileDetailRow}>
-        <span className={profileDetailLabel}>職　業</span>
-        <span className={profileDetailValue}>IT関係</span>
-      </div>
-      <div className={profileDetailRow}>
-        <span className={profileDetailLabel}>年　収</span>
-        <span className={profileDetailValue}>500万円</span>
-      </div>
-      <div className={profileDetailRow}>
-        <span className={profileDetailLabel}>身　長</span>
-        <span className={profileDetailValue}>175cm</span>
-      </div>
-      <div className={profileDetailRow}>
-        <span className={profileDetailLabel}>体　型</span>
-        <span className={profileDetailValue}>スレンダー</span>
-      </div>
-      <div className={profileDetailRow}>
-        <span className={profileDetailLabel}>趣　味</span>
-        <span className={profileDetailValue}>音楽鑑賞、料理</span>
-      </div>
-      <div className={profileDetailRow}>
-        <span className={profileDetailLabel}>出　身</span>
-        <span className={profileDetailValue}>神奈川</span>
-      </div>
-      <div className={profileDetailRow}>
-        <span className={profileDetailLabel}>血液型</span>
-        <span className={profileDetailValue}>B型</span>
-      </div>
-      <div className={profileDetailRow}>
-        <span className={profileDetailLabel}>最終学歴</span>
-        <span className={profileDetailValue}>大学</span>
-      </div>
-      <div className={profileDetailRow}>
-        <span className={profileDetailLabel}>学校名</span>
-        <span className={profileDetailValue}>能見野大学</span>
-      </div>
-      <div className={profileDetailRow}>
-        <span className={profileDetailLabel}>言　語</span>
-        <span className={profileDetailValue}>日本語、英語</span>
-      </div>
-      <div className={profileDetailRow}>
-        <span className={profileDetailLabel}>タバコ</span>
-        <span className={profileDetailValue}>加熱式/電子タバコ</span>
-      </div>
-    </div>
-  )
-}
 export default ProfileDetail

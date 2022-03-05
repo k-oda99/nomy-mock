@@ -3,7 +3,7 @@ import { css } from '@emotion/css'
 import FilterNoneIcon from '@mui/icons-material/FilterNone'
 import { User } from '../../types/User'
 
-interface Props {
+type Props = {
   user: User
 }
 const ProfileDescription: VFC<Props> = (props) => {
