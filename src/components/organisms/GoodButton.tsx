@@ -1,5 +1,5 @@
 import React, { VFC } from 'react'
-import { goodStatusVar } from '../../../cache'
+import { goodStatusVar } from '../../store/cache'
 import { css } from '@emotion/css'
 import Button from '../atoms/Button'
 import { useReactiveVar } from '@apollo/client'

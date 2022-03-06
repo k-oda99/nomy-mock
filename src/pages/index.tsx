@@ -1,9 +1,16 @@
 import React, { VFC } from 'react'
-import GroupCardSquare from '../components/organisms/GroupCardSquare'
 import GroupCardWide from '../components/organisms/GroupCardWide'
 import Layout from '../components/organisms/Layout'
 // import { useGetGroups } from '../hooks'
 import { css } from '@emotion/css'
+import { Box, Grid } from '@mui/material'
+import Link from 'next/link'
+import ImageContainer from '../components/organisms/ImageContainer'
+import GroupCardDescription from '../components/organisms/GroupCardDescription'
+import {
+  RECOMMEND_GROUP_DATA,
+  PICK_UP_GROUP_DATA,
+} from '../constants/opponentGroupData'
 
 const Home: VFC = () => {
   // const { data } = useGetGroups()
@@ -14,15 +21,39 @@ const Home: VFC = () => {
         <div className={styles.title}>
           <p>注目のグループ</p>
         </div>
-        <GroupCardWide />
+        <Link href="/">
+          <GroupCardWide group={PICK_UP_GROUP_DATA} />
+        </Link>
         <div className={styles.title}>
           <p>あなたへのおすすめ</p>
         </div>
-        <div className={styles.recommend_container}>
-          {data?.map((group) => {
-            return <GroupCardSquare key={group.id} group={group} />
+        <Grid
+          container
+          rowSpacing={2}
+          columnSpacing={2}
+          className={styles.recommend_container}
+        >
+          {RECOMMEND_GROUP_DATA?.map((group) => {
+            return (
+              <Grid key={group.id} item xs={5.8}>
+                <Box className={styles.recommend}>
+                  <Link
+                    href={{ pathname: `/[groupId]`, query: group.id }}
+                    as={`/${group?.id}`}
+                  >
+                    <div>
+                      <ImageContainer group={group} />
+                      <GroupCardDescription
+                        cardType={'narrow'}
+                        isMan={group.users[0].sex === 0}
+                      />
+                    </div>
+                  </Link>
+                </Box>
+              </Grid>
+            )
           })}
-        </div>
+        </Grid>
       </div>
     </Layout>
   )
@@ -49,266 +80,23 @@ const styles = {
   `,
   recommend_container: css`
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 0 3vw;
-    box-sizing: border-box;
-    > :nth-child(4n + 1) {
-      height: 170px;
-    }
-    > :nth-child(4n + 2) {
-      height: 213px;
-    }
+    margin-left: -8px;
+    margin-bottom: 8px;
     > :nth-child(4n + 3) {
-      height: 213px;
-      margin-top: -43px;
-    }
-    > :nth-child(4n + 4) {
-      height: 170px;
+      margin-top: -48px;
     }
   `,
+  recommend: css`
+    text-align: right;
+    border-radius: 16px;
+    box-shadow: 10px 5px 10px rgba(18, 47, 61, 0.3);
+  `,
+  description: css`
+    width: 100%;
+    text-align: left;
+    font-size: 0.5rem;
+    padding: 1vw 0 1vw 3vw;
+  `,
 }
-
-const data = [
-  {
-    id: '1',
-    users: [
-      {
-        id: '1',
-        imageForCard: '/user1-2.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'あかね',
-        age: '25',
-        job: '歯科助手',
-      },
-      {
-        id: '2',
-        imageForCard: '/user3-2.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'ゆり',
-        age: '25',
-        job: '美容師',
-      },
-    ],
-  },
-  {
-    id: '2',
-    users: [
-      {
-        id: '3',
-        imageForCard: '/user1-3.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'あかね',
-        age: '25',
-        job: '歯科助手',
-      },
-      {
-        id: '4',
-        imageForCard: '/user2-2.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'かな',
-        age: '27',
-        job: '広告営業',
-      },
-      {
-        id: '5',
-        imageForCard: '/user3-3.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'ゆり',
-        age: '25',
-        job: '美容師',
-      },
-    ],
-  },
-  {
-    id: '3',
-    users: [
-      {
-        id: '6',
-        imageForCard: '/user1-3.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'あかね',
-        age: '25',
-        job: '歯科助手',
-      },
-      {
-        id: '7',
-        imageForCard: '/user3-4.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'ゆり',
-        age: '25',
-        job: '美容師',
-      },
-      {
-        id: '8',
-        imageForCard: '/user2-2.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'かな',
-        age: '27',
-        job: '広告営業',
-      },
-      {
-        id: '9',
-        imageForCard: '/user4.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'えみり',
-        age: '25',
-        job: '美容師',
-      },
-    ],
-  },
-  {
-    id: '4',
-    users: [
-      {
-        id: '10',
-        imageForCard: '/user1-2.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'あかね',
-        age: '25',
-        job: '歯科助手',
-      },
-      {
-        id: '11',
-        imageForCard: '/user3-2.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'ゆり',
-        age: '25',
-        job: '美容師',
-      },
-    ],
-  },
-  {
-    id: '5',
-    users: [
-      {
-        id: '12',
-        imageForCard: '/user1-2.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'あかね',
-        age: '25',
-        job: '歯科助手',
-      },
-      {
-        id: '13',
-        imageForCard: '/user3-2.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'ゆり',
-        age: '25',
-        job: '美容師',
-      },
-    ],
-  },
-  {
-    id: '6',
-    users: [
-      {
-        id: '14',
-        imageForCard: '/user1-3.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'あかね',
-        age: '25',
-        job: '歯科助手',
-      },
-      {
-        id: '15',
-        imageForCard: '/user2-2.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'かな',
-        age: '27',
-        job: '広告営業',
-      },
-      {
-        id: '16',
-        imageForCard: '/user3-3.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'ゆり',
-        age: '25',
-        job: '美容師',
-      },
-    ],
-  },
-  {
-    id: '7',
-    users: [
-      {
-        id: '17',
-        imageForCard: '/user1-3.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'あかね',
-        age: '25',
-        job: '歯科助手',
-      },
-      {
-        id: '18',
-        imageForCard: '/user3-4.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'ゆり',
-        age: '25',
-        job: '美容師',
-      },
-      {
-        id: '19',
-        imageForCard: '/user2-2.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'かな',
-        age: '27',
-        job: '広告営業',
-      },
-      {
-        id: '20',
-        imageForCard: '/user4.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'えみり',
-        age: '25',
-        job: '美容師',
-      },
-    ],
-  },
-  {
-    id: '8',
-    users: [
-      {
-        id: '21',
-        imageForCard: '/user1-2.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'あかね',
-        age: '25',
-        job: '歯科助手',
-      },
-      {
-        id: '22',
-        imageForCard: '/user3-2.png',
-        imageForProfile: '',
-        imageForIcon: '',
-        name: 'ゆり',
-        age: '25',
-        job: '美容師',
-      },
-    ],
-  },
-]
 
 export default Home

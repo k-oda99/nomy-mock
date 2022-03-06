@@ -1,4 +1,4 @@
-import React, { ReactNode, useState, VFC } from 'react'
+import React, { FC } from 'react'
 import Head from 'next/head'
 import { css } from '@emotion/css'
 import HomeIcon from '@mui/icons-material/Home'
@@ -11,10 +11,16 @@ import WidgetsIcon from '@mui/icons-material/Widgets'
 import WidgetsOutlinedIcon from '@mui/icons-material/WidgetsOutlined'
 import { Grid } from '@mui/material'
 import Link from 'next/link'
+import {
+  MEGA_MENU_ITEM_KEYS,
+  MEGA_MENU_ITEM_LABELS,
+  MEGA_MENU_ITEM_LINKS,
+} from '../../constants/megaMenuItems'
+import { selectedMegaMenuItemKeyVar } from '../../store/cache'
+import { useReactiveVar } from '@apollo/client'
 
 type Props = {
-  children: ReactNode
-  title: string
+  title?: string
 }
 
 type MegaMenuItemConditions = {
@@ -22,14 +28,12 @@ type MegaMenuItemConditions = {
   selectedFlg: boolean
 }
 
-const MEGA_MENU_ITEM_KEYS = ['home', 'good', 'chat', 'myMenu']
-const MEGA_MENU_ITEM_LABELS = ['ホーム', 'いいね', 'やりとり', 'マイメニュー']
-const MEGA_MENU_ITEM_LINKS = ['/', '/', '/', '/']
+const Layout: FC<Props> = ({ children, title = 'nomy' }) => {
+  const selectedMegaMenuItemKey = useReactiveVar(selectedMegaMenuItemKeyVar)
 
-const Layout: VFC<Props> = ({ children, title = 'nomy' }) => {
-  const [selectedMegaMenuItem, setSelectedMegaMenuItem] = useState(
-    MEGA_MENU_ITEM_KEYS[0]
-  )
+  const setSelectedMegaMenuItem = (itemKey) => {
+    selectedMegaMenuItemKeyVar(itemKey)
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -38,10 +42,10 @@ const Layout: VFC<Props> = ({ children, title = 'nomy' }) => {
       <main className={styles.main}>{children}</main>
       <footer className={styles.mega_menu}>
         <Grid container className={styles.mega_menu_wrapper}>
-          {MEGA_MENU_ITEM_KEYS.map((item, index) => {
-            const selectedFlg = selectedMegaMenuItem === item
+          {MEGA_MENU_ITEM_KEYS.map((itemKey, index) => {
+            const selectedFlg = selectedMegaMenuItemKey === itemKey
             const megaMenuConditions: MegaMenuItemConditions = {
-              megaMenuItemKey: item,
+              megaMenuItemKey: itemKey,
               selectedFlg,
             }
             return (
@@ -49,11 +53,13 @@ const Layout: VFC<Props> = ({ children, title = 'nomy' }) => {
                 <Grid
                   item
                   xs={3}
-                  onClick={() => setSelectedMegaMenuItem(item)}
+                  onClick={() => setSelectedMegaMenuItem(itemKey)}
                   className={styles.mega_menu_child}
                 >
                   {megaMenuIcons(megaMenuConditions)}
-                  <span className={selectedFlg && styles.mega_menu_label}>
+                  <span
+                    className={selectedFlg ? styles.mega_menu_label : undefined}
+                  >
                     {MEGA_MENU_ITEM_LABELS[index]}
                   </span>
                 </Grid>
@@ -66,7 +72,7 @@ const Layout: VFC<Props> = ({ children, title = 'nomy' }) => {
   )
 }
 
-const megaMenuIcons: VFC<MegaMenuItemConditions> = (megaMenuItemConditions) => {
+const megaMenuIcons: FC<MegaMenuItemConditions> = (megaMenuItemConditions) => {
   const { megaMenuItemKey, selectedFlg } = megaMenuItemConditions
   if (megaMenuItemKey === 'home') {
     return selectedFlg ? <HomeIcon /> : <HomeOutlinedIcon />

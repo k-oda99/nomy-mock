@@ -1,17 +1,23 @@
 import React, { useEffect, useState, VFC } from 'react'
-import { useRouter } from 'next/dist/client/router'
-import { useGetUsers } from '../../hooks'
-import UserIcons from '../../components/organisms/UserIcons'
-import ProfileDetail from '../../components/organisms/ProfileDetail'
-import Profile from '../../components/organisms/Profile'
+import UserIcons from './UserIcons'
+import ProfileDetail from './ProfileDetail'
+import Profile from './Profile'
 import { css } from '@emotion/css'
-import LowerLevelLayout from '../../components/organisms/LowerLevelLayout'
-import GroupDetailFooter from '../../components/organisms/GroupDetailFooter'
+import LowerLevelLayout from './LowerLevelLayout'
+import GroupDetailFooter from './GroupDetailFooter'
+import { useGetUsers } from '../../hooks'
+import useGetGoodGroup from '../../hooks/useGetGoodGroup'
 
-const GroupDetail: VFC = () => {
-  const router = useRouter()
-  const groupId = router.query.id as string
-  const { data } = useGetUsers(groupId)
+type Props = {
+  componentType: string
+  groupId: string
+}
+const GroupDetail: VFC<Props> = (props) => {
+  const { groupId, componentType } = props
+  const data =
+    componentType === 'opponentGroupDetail'
+      ? useGetUsers(groupId)
+      : useGetGoodGroup(groupId)
 
   const user = data ? data[0] : { id: '' }
   const [selectedUser, setSelectedUser] = useState(user.id)

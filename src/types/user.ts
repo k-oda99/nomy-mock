@@ -3,7 +3,7 @@ export type User = {
   name: string
   age: string
   job: string
+  sex: number
   imageForCard: string
   imageForProfile: string
-  imageForIcon: string
 }

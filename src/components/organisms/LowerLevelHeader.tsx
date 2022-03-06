@@ -1,16 +1,22 @@
-import React, { VFC } from 'react'
-import Link from 'next/link'
+import React, { FC } from 'react'
 import { css } from '@emotion/css'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
+import { useRouter } from 'next/router'
+import Head from 'next/head'
 
-const LowerLevelHeader: VFC = () => {
+type Props = {
+  title?: string
+}
+const LowerLevelHeader: FC<Props> = ({ title = 'nomy' }) => {
+  const router = useRouter()
   return (
     <div className={styles.header}>
+      <Head>
+        <title>{title}</title>
+      </Head>
       <div className={styles.backButton}>
-        <Link href="/">
-          <ArrowBackIosNewIcon />
-        </Link>
+        <ArrowBackIosNewIcon onClick={() => router.back()} />
       </div>
       <div className={styles.action}>
         <MoreHorizIcon fontSize="large" />

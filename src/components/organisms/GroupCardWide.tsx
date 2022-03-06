@@ -2,21 +2,25 @@ import React, { memo, VFC } from 'react'
 import Link from 'next/link'
 import { css } from '@emotion/css'
 import { User } from '../../types/User'
+import GroupCardDescription from './GroupCardDescription'
+import { Group } from '../../types/Group'
 
-const GroupCardWide: VFC = memo(function GroupCardWide() {
+type Props = {
+  group: Group
+}
+const GroupCardWide: VFC<Props> = memo(function GroupCardWide(props) {
+  const { group } = props
+  const users = group.users
   return (
-    <Link href="/">
-      <div className={styles.pick_up}>
-        <div className={styles.pick_up_img}>
-          {users.map((user) => imageWithProfileElement(user))}
-        </div>
-        <div className={styles.description}>
-          <span>金土日祝</span>
-          <span>ほか</span>&nbsp;
-          <span>渋谷/恵比寿</span>
-        </div>
+    <div className={styles.pick_up}>
+      <div className={styles.pick_up_img}>
+        {users.map((user) => imageWithProfileElement(user))}
       </div>
-    </Link>
+      <GroupCardDescription
+        cardType={'wide'}
+        isMan={group.users[0].sex === 0}
+      />
+    </div>
   )
 })
 
@@ -33,36 +37,6 @@ const imageWithProfileElement: VFC<User> = (user) => {
     </div>
   )
 }
-
-const users = [
-  {
-    id: '1',
-    imageForCard: '/user1.png',
-    imageForProfile: '',
-    imageForIcon: '',
-    name: 'あかね',
-    age: '25',
-    job: '歯科助手',
-  },
-  {
-    id: '2',
-    imageForCard: '/user2.png',
-    imageForProfile: '',
-    imageForIcon: '',
-    name: 'かな',
-    age: '27',
-    job: '広告営業',
-  },
-  {
-    id: '3',
-    imageForCard: '/user3.png',
-    imageForProfile: '',
-    imageForIcon: '',
-    name: 'ゆり',
-    age: '25',
-    job: '美容師',
-  },
-]
 
 const styles = {
   pick_up: css`

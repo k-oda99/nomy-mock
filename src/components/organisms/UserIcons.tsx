@@ -34,6 +34,7 @@ const styles = {
     height: 55px;
     margin: 1vw 0;
     padding-left: 3vw;
+    box-sizing: border-box;
   `,
 }
 
