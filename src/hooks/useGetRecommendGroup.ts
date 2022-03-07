@@ -1,9 +1,8 @@
 // import { User } from '../types/User'
 // import { useGetGroupByIdQuery } from '../types/generated/graphql'
-import { GOOD_GROUP_DATA } from '../constants/ownGroupData'
+import { RECOMMEND_GROUP_DATA } from '../constants/opponentGroupData'
 
-const useGetGoodGroup = (groupId) => {
-  // const { groupId } = props
+const useGetRecommendGroup = (id) => {
   // const { data, ...rest } = useGetGroupByIdQuery({
   //   variables: {
   //     id,
@@ -23,8 +22,8 @@ const useGetGoodGroup = (groupId) => {
 
   // return { ...rest, data: users }
 
-  const group = GOOD_GROUP_DATA.filter((group) => group.id === groupId)[0]
+  const group = RECOMMEND_GROUP_DATA.filter((group) => group.id === id)[0]
   return group
 }
 
-export default useGetGoodGroup
+export default useGetRecommendGroup

@@ -5,21 +5,25 @@ import Profile from './Profile'
 import { css } from '@emotion/css'
 import LowerLevelLayout from './LowerLevelLayout'
 import GroupDetailFooter from './GroupDetailFooter'
-import { useGetUsers } from '../../hooks'
+import { useGetPickUpGroup, useGetRecommendGroup } from '../../hooks'
 import useGetGoodGroup from '../../hooks/useGetGoodGroup'
+import { GROUP_DETAIL_COMPONENT_TYPES } from '../../constants/groupDetailComponentTypes'
 
 type Props = {
-  componentType: string
   groupId: string
+  componentType: string
 }
 const GroupDetail: VFC<Props> = (props) => {
   const { groupId, componentType } = props
   const data =
-    componentType === 'opponentGroupDetail'
-      ? useGetUsers(groupId)
+    componentType === GROUP_DETAIL_COMPONENT_TYPES[0]
+      ? useGetPickUpGroup(groupId)
+      : componentType === GROUP_DETAIL_COMPONENT_TYPES[1]
+      ? useGetRecommendGroup(groupId)
       : useGetGoodGroup(groupId)
+  const users = data?.users
 
-  const user = data ? data[0] : { id: '' }
+  const user = users ? users[0] : { id: '' }
   const [selectedUser, setSelectedUser] = useState(user.id)
   useEffect(() => {
     setSelectedUser(user.id)
@@ -29,17 +33,17 @@ const GroupDetail: VFC<Props> = (props) => {
     <LowerLevelLayout>
       <div className={styles.content}>
         <UserIcons
-          users={data}
+          users={users}
           selectedUser={selectedUser}
           onChangeUserId={setSelectedUser}
         />
-        {data?.map(
+        {data?.users.map(
           (user) =>
             user.id === selectedUser && <Profile key={user.id} user={user} />
         )}
         <ProfileDetail />
       </div>
-      <GroupDetailFooter groupId={groupId} />
+      <GroupDetailFooter groupId={groupId} componentType={componentType} />
     </LowerLevelLayout>
   )
 }

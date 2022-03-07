@@ -25,7 +25,7 @@ const GoodButton: VFC<Props> = (props) => {
         </Button>
       )}
       {goodStatus && (
-        <Button onClick={handleClickGoodButton} buttonType="done">
+        <Button onClick={handleClickGoodButton} buttonType="light">
           いいね済み
         </Button>
       )}

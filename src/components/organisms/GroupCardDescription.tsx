@@ -1,7 +1,5 @@
-import { useReactiveVar } from '@apollo/client'
 import { css } from '@emotion/css'
 import React, { memo, VFC } from 'react'
-import { userDataVar } from '../../store/cache'
 
 type Props = {
   cardType: string

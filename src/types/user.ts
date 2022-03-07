@@ -5,5 +5,5 @@ export type User = {
   job: string
   sex: number
   imageForCard: string
-  imageForProfile: string
+  imagesForProfile: string[]
 }

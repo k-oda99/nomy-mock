@@ -7,6 +7,7 @@ export const userDataVar = makeVar<{ [key: string]: string | number }>({
   sex: 0,
 })
 export const goodStatusVar = makeVar<{ [key: string]: boolean }>({})
+export const thanksStatusVar = makeVar<{ [key: string]: boolean }>({})
 export const selectedMegaMenuItemKeyVar = makeVar<string>(
   MEGA_MENU_ITEM_KEYS[0]
 )

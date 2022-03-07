@@ -1,5 +1,4 @@
 import React, { memo, VFC } from 'react'
-import Link from 'next/link'
 import { css } from '@emotion/css'
 import { User } from '../../types/User'
 import GroupCardDescription from './GroupCardDescription'
@@ -14,11 +13,11 @@ const GroupCardWide: VFC<Props> = memo(function GroupCardWide(props) {
   return (
     <div className={styles.pick_up}>
       <div className={styles.pick_up_img}>
-        {users.map((user) => imageWithProfileElement(user))}
+        {users?.map((user) => imageWithProfileElement(user))}
       </div>
       <GroupCardDescription
         cardType={'wide'}
-        isMan={group.users[0].sex === 0}
+        isMan={users && users[0].sex === 0}
       />
     </div>
   )

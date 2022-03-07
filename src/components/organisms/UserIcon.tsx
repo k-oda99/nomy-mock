@@ -1,7 +1,6 @@
 import React, { VFC } from 'react'
 import { css } from '@emotion/css'
 import { User } from '../../types/User'
-import { Box } from '@mui/material'
 
 interface Props {
   user: User
@@ -20,9 +19,14 @@ const UserIcon: VFC<Props> = (props) => {
     >
       {(selectedUser === user.id && (
         <div className={styles.userIconBackground}>
-          <img src={user.imageForProfile} className={styles.userIconImage} />
+          <img
+            src={user.imagesForProfile[0]}
+            className={styles.userIconImage}
+          />
         </div>
-      )) || <img src={user.imageForProfile} className={styles.userIconImage} />}
+      )) || (
+        <img src={user.imagesForProfile[0]} className={styles.userIconImage} />
+      )}
     </div>
   )
 }

@@ -1,13 +1,16 @@
 import React, { VFC } from 'react'
 import { css } from '@emotion/css'
 import GoodButton from './GoodButton'
+import { GROUP_DETAIL_COMPONENT_TYPES } from '../../constants/groupDetailComponentTypes'
+import ThanksButton from './ThanksButton'
 
 type Props = {
   groupId: string
+  componentType: string
 }
 
 const GroupDetailFooter: VFC<Props> = (props) => {
-  const { groupId } = props
+  const { groupId, componentType } = props
   return (
     <footer className={footer}>
       <div className={footerUserIcon}>
@@ -24,7 +27,12 @@ const GroupDetailFooter: VFC<Props> = (props) => {
       <div className={footerDescription}>
         <span>金土日祝 夜 ほか 渋谷/恵比寿 男性側 ¥10,000/人</span>
       </div>
-      <GoodButton groupId={groupId} />
+      {componentType === GROUP_DETAIL_COMPONENT_TYPES[0] ||
+      componentType === GROUP_DETAIL_COMPONENT_TYPES[1] ? (
+        <GoodButton groupId={groupId} />
+      ) : (
+        <ThanksButton groupId={groupId} />
+      )}
     </footer>
   )
 }

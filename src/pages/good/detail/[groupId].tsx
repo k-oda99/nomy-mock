@@ -9,7 +9,7 @@ const GoodDetail: VFC = () => {
 
   return (
     <GroupDetail
-      componentType={GROUP_DETAIL_COMPONENT_TYPES[1]}
+      componentType={GROUP_DETAIL_COMPONENT_TYPES[2]}
       groupId={groupId}
     />
   )
