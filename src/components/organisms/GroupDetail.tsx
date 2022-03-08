@@ -7,7 +7,10 @@ import LowerLevelLayout from './LowerLevelLayout'
 import GroupDetailFooter from './GroupDetailFooter'
 import { useGetPickUpGroup, useGetRecommendGroup } from '../../hooks'
 import useGetGoodGroup from '../../hooks/useGetGoodGroup'
-import { GROUP_DETAIL_COMPONENT_TYPES } from '../../constants/groupDetailComponentTypes'
+import {
+  GROUP_DETAIL_COMPONENT_TYPES,
+  USER_ICONS_COMPONENT_TYPES,
+} from '../../constants/componentTypes'
 
 type Props = {
   groupId: string
@@ -33,6 +36,7 @@ const GroupDetail: VFC<Props> = (props) => {
     <LowerLevelLayout>
       <div className={styles.content}>
         <UserIcons
+          componentType={USER_ICONS_COMPONENT_TYPES[0]}
           users={users}
           selectedUser={selectedUser}
           onChangeUserId={setSelectedUser}

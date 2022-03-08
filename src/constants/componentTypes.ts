@@ -3,3 +3,5 @@ export const GROUP_DETAIL_COMPONENT_TYPES = [
   'recommendGroupDetail',
   'goodDetail',
 ]
+
+export const USER_ICONS_COMPONENT_TYPES = ['profile', 'chat']

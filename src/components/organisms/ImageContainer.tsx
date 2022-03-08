@@ -60,13 +60,13 @@ const styles = {
     color: #ffffff;
     text-align: left;
     line-height: 0.7rem;
-    & :nth-child(1) {
+    > :nth-child(1) {
       font-size: 0.9rem;
     }
-    & :nth-child(2) {
+    > :nth-child(2) {
       font-size: 0.6rem;
     }
-    & :nth-child(4) {
+    > :nth-child(4) {
       font-size: 0.4rem;
     }
   `,

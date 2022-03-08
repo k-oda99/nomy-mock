@@ -14,7 +14,13 @@ const UserIcon: VFC<Props> = (props) => {
   return (
     <div
       key={user.id}
-      onClick={() => onClickUserIcon(user.id)}
+      onClick={
+        !onClickUserIcon
+          ? () => {
+              return
+            }
+          : () => onClickUserIcon(user.id)
+      }
       className={styles.userIcon}
     >
       {(selectedUser === user.id && (

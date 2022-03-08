@@ -1,7 +1,7 @@
 import React, { VFC } from 'react'
 import { css } from '@emotion/css'
 import GoodButton from './GoodButton'
-import { GROUP_DETAIL_COMPONENT_TYPES } from '../../constants/groupDetailComponentTypes'
+import { GROUP_DETAIL_COMPONENT_TYPES } from '../../constants/componentTypes'
 import ThanksButton from './ThanksButton'
 
 type Props = {

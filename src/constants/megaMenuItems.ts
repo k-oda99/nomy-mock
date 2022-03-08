@@ -5,4 +5,4 @@ export const MEGA_MENU_ITEM_LABELS = [
   'やりとり',
   'マイメニュー',
 ]
-export const MEGA_MENU_ITEM_LINKS = ['/', '/good', '/', '/']
+export const MEGA_MENU_ITEM_LINKS = ['/', '/good', '/chat', '/']
