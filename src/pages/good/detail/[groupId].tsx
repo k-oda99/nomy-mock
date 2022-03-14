@@ -1,6 +1,6 @@
 import React, { VFC } from 'react'
 import { useRouter } from 'next/dist/client/router'
-import GroupDetail from '../../../components/organisms/GroupDetail'
+import GroupDetail from '../../../components/organisms/GroupDetail/GroupDetail'
 import { GROUP_DETAIL_COMPONENT_TYPES } from '../../../constants/componentTypes'
 
 const GoodDetail: VFC = () => {

@@ -1,7 +1,7 @@
 import React, { VFC } from 'react'
-import { thanksStatusVar } from '../../store/cache'
+import { thanksStatusVar } from '../../../store/cache'
 import { css } from '@emotion/css'
-import Button from '../atoms/Button'
+import Button from '../../atoms/Button'
 import { useReactiveVar } from '@apollo/client'
 
 type Props = {

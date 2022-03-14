@@ -4,5 +4,9 @@ export type Group = {
   id: string
   users: User[]
   goodGroups?: Group[]
-  matchedGroups?: Group[]
+  matchedGroups?: MatchedGroups[]
+}
+
+type MatchedGroups = Group & {
+  matchedGroupId: string
 }

@@ -2,9 +2,9 @@ import React, { VFC } from 'react'
 import { useRouter } from 'next/dist/client/router'
 import { Box, Container } from '@mui/material'
 import Link from 'next/link'
-import GroupCardWide from '../../components/organisms/GroupCardWide'
-import useGetGoodList from '../../hooks/useGetGoodList'
-import LowerLevelLayout from '../../components/organisms/LowerLevelLayout'
+import GroupCardWide from '../../components/organisms/GroupCard/GroupCardWide'
+import { useGetGoodList } from '../../hooks'
+import LowerLevelLayout from '../../components/organisms/Layout/LowerLevelLayout'
 
 const GoodList: VFC = () => {
   const router = useRouter()

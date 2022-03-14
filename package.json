@@ -78,5 +78,8 @@
       "npx eslint . --fix",
       "npx prettier --write ."
     ]
+  },
+  "volta": {
+    "node": "16.14.0"
   }
 }

@@ -1,25 +1,32 @@
 import React, { VFC } from 'react'
 import { css } from '@emotion/css'
-import { User } from '../../types/User'
+import { User } from '../../../types/User'
 import UserIcon from './UserIcon'
-import { USER_ICONS_COMPONENT_TYPES } from '../../constants/componentTypes'
+import { USER_ICONS_COMPONENT_TYPES } from '../../../constants/componentTypes'
 
 interface Props {
   componentType: string
   users: User[]
   selectedUser?: string
+  additionalIconStyles?: { [key: string]: string }
   onChangeUserId?: React.Dispatch<React.SetStateAction<string>>
 }
 
 const UserIcons: VFC<Props> = (props) => {
-  const { componentType, users, selectedUser, onChangeUserId } = props
+  const {
+    componentType,
+    users,
+    selectedUser,
+    additionalIconStyles,
+    onChangeUserId,
+  } = props
 
   return (
     <div
       className={
         componentType === USER_ICONS_COMPONENT_TYPES[0]
-          ? styles.userIconsForProfile
-          : styles.userIconsForChat
+          ? styles.sideBySide
+          : styles.overlapping
       }
     >
       {users?.map((user) => (
@@ -27,6 +34,7 @@ const UserIcons: VFC<Props> = (props) => {
           key={user.id}
           user={user}
           selectedUser={selectedUser}
+          additionalIconStyles={additionalIconStyles}
           onClickUserIcon={onChangeUserId}
         />
       ))}
@@ -43,12 +51,12 @@ const userIcons = css`
 `
 
 const styles = {
-  userIconsForProfile: css`
+  sideBySide: css`
     ${userIcons}
     width: 100%;
     padding-left: 3vw;
   `,
-  userIconsForChat: css`
+  overlapping: css`
     ${userIcons}
     min-width: 80px;
     position: relative;

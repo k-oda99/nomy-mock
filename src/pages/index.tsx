@@ -1,12 +1,12 @@
 import React, { VFC } from 'react'
-import GroupCardWide from '../components/organisms/GroupCardWide'
-import Layout from '../components/organisms/Layout'
+import GroupCardWide from '../components/organisms/GroupCard/GroupCardWide'
+import Layout from '../components/organisms/Layout/Layout'
 // import { useGetGroups } from '../hooks'
 import { css } from '@emotion/css'
 import { Box, Container, Grid } from '@mui/material'
 import Link from 'next/link'
-import ImageContainer from '../components/organisms/ImageContainer'
-import GroupCardDescription from '../components/organisms/GroupCardDescription'
+import ImageContainer from '../components/organisms/Common/ImageContainer'
+import GroupCardDescription from '../components/organisms/GroupCard/GroupCardDescription'
 import {
   RECOMMEND_GROUP_DATA,
   PICK_UP_GROUP_DATA,

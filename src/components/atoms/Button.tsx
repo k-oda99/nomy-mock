@@ -4,11 +4,12 @@ import { css } from '@emotion/css'
 type BaseProps = React.ButtonHTMLAttributes<HTMLButtonElement>
 type OwnProps = {
   buttonType: string
+  additionalStyles?: { [key: string]: string }
 }
 type Props = BaseProps & OwnProps
 
 const Button: FC<Props> = (props) => {
-  const { buttonType, ...rest } = props
+  const { buttonType, additionalStyles, ...rest } = props
   return (
     <button
       {...rest}
@@ -19,6 +20,7 @@ const Button: FC<Props> = (props) => {
           ? styles.secondaryButton
           : styles.lightButton
       }
+      style={additionalStyles}
     />
   )
 }

@@ -1,8 +1,8 @@
 import React, { memo, VFC } from 'react'
 import { css } from '@emotion/css'
-import { User } from '../../types/User'
+import { User } from '../../../types/User'
 import GroupCardDescription from './GroupCardDescription'
-import { Group } from '../../types/Group'
+import { Group } from '../../../types/Group'
 
 type Props = {
   group: Group

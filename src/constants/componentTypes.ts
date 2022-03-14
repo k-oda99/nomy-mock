@@ -4,4 +4,4 @@ export const GROUP_DETAIL_COMPONENT_TYPES = [
   'goodDetail',
 ]
 
-export const USER_ICONS_COMPONENT_TYPES = ['profile', 'chat']
+export const USER_ICONS_COMPONENT_TYPES = ['sideBySide', 'overlapping']

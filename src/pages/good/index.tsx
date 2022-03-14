@@ -1,6 +1,6 @@
 import React, { VFC } from 'react'
-import GroupCardWide from '../../components/organisms/GroupCardWide'
-import Layout from '../../components/organisms/Layout'
+import GroupCardWide from '../../components/organisms/GroupCard/GroupCardWide'
+import Layout from '../../components/organisms/Layout/Layout'
 // import { useGetGroups } from '../hooks'
 import { Box, Container } from '@mui/material'
 import Link from 'next/link'

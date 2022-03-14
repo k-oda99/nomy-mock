@@ -1,7 +1,7 @@
 import { css } from '@emotion/css'
 import React, { memo, VFC } from 'react'
-import { Group } from '../../types/Group'
-import { User } from '../../types/User'
+import { Group } from '../../../types/Group'
+import { User } from '../../../types/User'
 
 type Props = {
   group: Group

@@ -1,15 +1,21 @@
 import React, { VFC } from 'react'
 import { css } from '@emotion/css'
-import { User } from '../../types/User'
+import { User } from '../../../types/User'
 
 interface Props {
   user: User
   selectedUser?: string
+  additionalIconStyles?: { [key: string]: string }
   onClickUserIcon?: React.Dispatch<React.SetStateAction<string>>
 }
 
 const UserIcon: VFC<Props> = (props) => {
-  const { user, selectedUser, onClickUserIcon } = props
+  const {
+    user,
+    selectedUser,
+    additionalIconStyles: additionalStyles,
+    onClickUserIcon,
+  } = props
 
   return (
     <div
@@ -28,10 +34,15 @@ const UserIcon: VFC<Props> = (props) => {
           <img
             src={user.imagesForProfile[0]}
             className={styles.userIconImage}
+            style={additionalStyles}
           />
         </div>
       )) || (
-        <img src={user.imagesForProfile[0]} className={styles.userIconImage} />
+        <img
+          src={user.imagesForProfile[0]}
+          className={styles.userIconImage}
+          style={additionalStyles}
+        />
       )}
     </div>
   )

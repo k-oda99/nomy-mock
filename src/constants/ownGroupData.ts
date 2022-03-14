@@ -269,6 +269,7 @@ export const OWN_GROUP_DATA: Group[] = [
     matchedGroups: [
       {
         id: '1',
+        matchedGroupId: '1',
         users: [
           {
             id: '1',
@@ -322,6 +323,7 @@ export const OWN_GROUP_DATA: Group[] = [
       },
       {
         id: '2',
+        matchedGroupId: '1',
         users: [
           {
             id: '1',
@@ -375,6 +377,7 @@ export const OWN_GROUP_DATA: Group[] = [
       },
       {
         id: '3',
+        matchedGroupId: '1',
         users: [
           {
             id: '1',

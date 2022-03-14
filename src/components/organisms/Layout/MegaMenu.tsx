@@ -14,8 +14,8 @@ import {
   MEGA_MENU_ITEM_KEYS,
   MEGA_MENU_ITEM_LABELS,
   MEGA_MENU_ITEM_LINKS,
-} from '../../constants/megaMenuItems'
-import { selectedMegaMenuItemKeyVar } from '../../store/cache'
+} from '../../../constants/megaMenuItems'
+import { selectedMegaMenuItemKeyVar } from '../../../store/cache'
 import { useReactiveVar } from '@apollo/client'
 
 type Props = {

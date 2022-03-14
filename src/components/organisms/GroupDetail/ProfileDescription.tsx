@@ -1,7 +1,7 @@
 import React, { VFC } from 'react'
 import { css } from '@emotion/css'
 import FilterNoneIcon from '@mui/icons-material/FilterNone'
-import { User } from '../../types/User'
+import { User } from '../../../types/User'
 
 type Props = {
   user: User

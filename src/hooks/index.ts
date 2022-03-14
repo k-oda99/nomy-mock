@@ -1,3 +1,6 @@
 export { default as useGetPickUpGroup } from './useGetPickUpGroup'
 export { default as useGetRecommendGroup } from './useGetRecommendGroup'
-export { default as useGetGroups } from './useGetGroups'
+export { default as useGet } from './useGetGoodGroup'
+export { default as useGetGoodGroup } from './useGetGoodGroup'
+export { default as useGetGoodList } from './useGetGoodList'
+export { default as useGetMatchedChatGroup } from './useGetMatchedChatGroup'

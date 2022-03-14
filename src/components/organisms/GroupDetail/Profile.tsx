@@ -1,5 +1,5 @@
 import React, { VFC } from 'react'
-import { User } from '../../types/User'
+import { User } from '../../../types/User'
 import ProfileDescription from './ProfileDescription'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
